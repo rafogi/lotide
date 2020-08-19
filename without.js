@@ -21,7 +21,7 @@ const assertArrayEqual = function (arr1, arr2) {
 
 
 const without = function (ar1, ar2) {
-  let newAr = ar1;
+  const newAr = ar1.slice();
   for (i = 0; i < ar1.length; i++) {
     for (j = 0; j < ar2.length; j++) {
       if (ar1[i] === ar2[j]) {
@@ -32,8 +32,11 @@ const without = function (ar1, ar2) {
   }
   return newAr;
 }
+
+
+console.log(without([1, 2, 3], [1]));
 const words = ["hello", "world", "lighthouse"];
-without(words, ["lighthouse"]); // no need to capture return value for this test case
+console.log(without(words, ["lighthouse"])); // no need to capture return value for this test case
 // Make sure the original array was not altered by the without function
 assertArrayEqual(words, ["hello", "world", "lighthouse"]);
 
