@@ -6,12 +6,12 @@ const assertEqual = function(actual, expected) {
   }
 };
 
-const eqArrays = function(array1, array2){
-  if(array1.length !== array2.length) {
+const eqArrays = function(array1, array2) {
+  if (array1.length !== array2.length) {
     return false;
   };
-  for(let i = 0; i < array1.length; i++){
-    if(array1[i] !== array2[i]){
+  for (let i = 0; i < array1.length; i++) {
+    if (array1[i] !== array2[i]) {
       return false;
     }
   };
@@ -24,20 +24,19 @@ const eqArrays = function(array1, array2){
 const eqObjects = function(object1, object2) {
   const ob1l = Object.keys(object1); //returns array of object1
   const ob2l = Object.keys(object2); // returns array of object2
-  if(ob1l.length !== ob2l.length){ //returns false if length of first object not equal length of 2nd
+  if (ob1l.length !== ob2l.length) { //returns false if length of first object not equal length of 2nd
     return false;
   }
-  for(const obs in object1){  
-    if(Array.isArray(object1[obs])){ //check if the object is an array
-      
-      if(!eqArrays(object1[obs], object2[obs])){ 
-        return false;
+  for (const obs in object1) {
+    if (Array.isArray(object1[obs])) { //check if the object is an array
+      if (!eqArrays(object1[obs], object2[obs])) { //call eqArrays function to check if arrays match
+        return false; //
       }
     } else {
-    if(object1[obs] !== object2[obs]){
-      return false;
+      if (object1[obs] !== object2[obs]) {
+        return false;
+      }
     }
-  }
   }
   return true;
 }
